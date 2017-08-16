@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
 var config = {
   dbServer: {
     protocol: 'http://',
-    host: '127.0.0.1:5984/cloudo',
+    host: '127.0.0.1:5984',
     user: '',
     password: '',
     userDB: 'sl-users',
@@ -41,7 +41,7 @@ var config = {
     }
   },
   security: {
-    maxFailedLogins: 3,
+    maxFailedLogins: 10,
     lockoutTime: 600,
     tokenLife: 86400,
     loginOnRegistration: true,

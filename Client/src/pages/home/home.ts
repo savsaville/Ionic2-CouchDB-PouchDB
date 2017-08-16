@@ -11,7 +11,7 @@ export class HomePage {
 
   todos: any;
 
-  constructor(public nav: NavController, public todoService: Todos, public alertCtrl: AlertController) {
+  constructor(public nav: NavController, public todoService: TodosProvider, public alertCtrl: AlertController) {
 
   }
 

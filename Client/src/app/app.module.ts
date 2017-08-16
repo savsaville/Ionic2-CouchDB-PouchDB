@@ -8,6 +8,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StatusBar } from '@ionic-native/status-bar';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
