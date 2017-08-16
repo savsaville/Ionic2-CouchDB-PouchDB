@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { TodosProvider } from '../../providers/todos/todos';
-
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -9,13 +9,13 @@ import { TodosProvider } from '../../providers/todos/todos';
 })
 export class HomePage {
 
-  todos:any;
+  todos: any;
 
-  constructor(public navCtrl: NavController, public todoService: TodosProvider, public alertCtrl: AlertController) {
+  constructor(public nav: NavController, public todoService: Todos, public alertCtrl: AlertController) {
 
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
 
     this.todoService.getTodos().then((data) => {
       this.todos = data;
@@ -23,8 +23,14 @@ export class HomePage {
 
   }
 
-   createTodo(){
- 
+  logout() {
+    this.todoService.logout();
+    this.todos = null;
+    this.nav.setRoot(LoginPage);
+  }
+
+  createTodo() {
+
     let prompt = this.alertCtrl.create({
       title: 'Add',
       message: 'What do you need to do?',
@@ -40,18 +46,18 @@ export class HomePage {
         {
           text: 'Save',
           handler: data => {
-            this.todoService.createTodo({title: data.title});
+            this.todoService.createTodo({ title: data.title });
           }
         }
       ]
     });
- 
+
     prompt.present();
- 
+
   }
 
-  updateTodo(todo){
- 
+  updateTodo(todo) {
+
     let prompt = this.alertCtrl.create({
       title: 'Edit',
       message: 'Change your mind?',
@@ -76,11 +82,11 @@ export class HomePage {
         }
       ]
     });
- 
+
     prompt.present();
   }
 
-   deleteTodo(todo){
+  deleteTodo(todo) {
     this.todoService.deleteTodo(todo);
   }
 
